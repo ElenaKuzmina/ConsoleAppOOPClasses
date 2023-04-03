@@ -62,7 +62,7 @@ namespace ConsoleAppOOPClasses //пространство имен проект�
             fio = "Лебедев М.Д.";
             adress = "Ликино-Дулево";
             birthday = new DateTime(2005, 02, 01);
-            scholarship = 100000.00;
+            scholarship = 0.00;
         }
         //конструктор с параметрами
         public ClsStudent(string f, DateTime d, string ad, 
@@ -87,7 +87,7 @@ namespace ConsoleAppOOPClasses //пространство имен проект�
         }
         public void SaveToFile(string filename)
         {
-            StreamWriter streamWriter= new StreamWriter(filename);
+            StreamWriter streamWriter= new StreamWriter(filename, true, Encoding.Default);
             streamWriter.WriteLine("Личные данные студента");
             streamWriter.WriteLine($"ФИО: {fio}");
             streamWriter.WriteLine($"Адрес проживания: {adress}");
@@ -95,6 +95,25 @@ namespace ConsoleAppOOPClasses //пространство имен проект�
             streamWriter.WriteLine($"Курс: {kurs}");
             streamWriter.WriteLine($"Группа:{group}");
             streamWriter.Close();
+        }
+        //метод ввода с клавиатуры
+        public void GetFromKeyboard()
+        {
+            Console.WriteLine("Укажите ФИО студента");
+            fio = Console.ReadLine();
+            Console.WriteLine("Укажите адрес студента");
+            adress = Console.ReadLine();
+            Console.WriteLine("Укажите телефон студента");
+            phone = Console.ReadLine();
+            Console.WriteLine("Укажите дату рождения студента");
+            Console.WriteLine("Год?"); int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Месяц?"); int month = int.Parse(Console.ReadLine());
+            Console.WriteLine("День?"); int day = int.Parse(Console.ReadLine());
+            birthday = new DateTime(year, month, day);
+            Console.WriteLine("Укажите курс студента");
+            kurs = byte.Parse(Console.ReadLine());
+            Console.WriteLine("Укажите группу студента");
+            group = Console.ReadLine();
         }
     }
 }

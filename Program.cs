@@ -23,7 +23,19 @@ using ConsoleAppOOPClasses;
 ClsStudent studentB = new ClsStudent();
 studentB.PrintToScreen();
 
+
 //создание объекта класса через параметры
 ClsStudent studentX = new ClsStudent("Хромов А.Ю", new DateTime(2005, 8, 24),
     "Давыдово", "8(905)777-77-77", 2, "ИСП.21.1А", 0);
 studentX.PrintToScreen();
+
+//ввод значений объекта с клавиатуры
+ClsStudent studentK = new ClsStudent();
+studentK.GetFromKeyboard();
+
+
+Console.WriteLine("Укажите имя файла для сохранения данных");
+string file = Console.ReadLine();
+studentB.SaveToFile(file);
+studentX.SaveToFile(file);
+studentK.SaveToFile(file);
